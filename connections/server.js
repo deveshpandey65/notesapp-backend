@@ -14,7 +14,7 @@ const app = express();
 app.use(
     cors(
         {
-            origin: ['*', 'http://localhost:3000', 'http://dnotesapp.vercel.app'],
+            origin: ['*', 'http://localhost:3000','https://dnotesapp.vercel.app/*', 'http://dnotesapp.vercel.app'],
             methods: ['GET', 'POST', 'PUT', 'DELETE'],
             allowedHeaders: ['Content-Type', 'Authorization'],
             credentials: true,
