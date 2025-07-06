@@ -3,8 +3,11 @@ const cors = require("cors");
 const { app } = require("../../connections/server");
 console.log('Hii from api.js')
 // Enable CORS
-app.use(cors({ origin: "*", credentials: true }));
-
+app.use(cors({
+    origin: ['https://dnotesapp.vercel.app', 'http://localhost:3000'],
+    credentials: true
+}));
+  
 app.get("/", (req, res) => {
     res.send("API is working 🚀");
 });
