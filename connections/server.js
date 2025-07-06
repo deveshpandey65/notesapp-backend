@@ -6,10 +6,22 @@ const dotenv = require('dotenv');
 const authRoutes = require('../routes/authRoutes');
 const noteRoutes = require('../routes/noteRoutes');
 const connectDB = require('./db');
+const cors = require('cors');
 connectDB();
 dotenv.config();
 
 const app = express();
+app.use(
+    cors(
+        {
+            origin: ['*', 'http://localhost:3000', 'http://dnotesapp.vercel.app'],
+            methods: ['GET', 'POST', 'PUT', 'DELETE'],
+            allowedHeaders: ['Content-Type', 'Authorization'],
+            credentials: true,
+
+        }
+    )
+)
 app.use(express.json());
 
 
