@@ -1,6 +1,6 @@
 [build]
   functions = "netlify/functions"
-  publish = "build" # or "dist" or your frontend's build dir
+  publish = "." # or remove this line completely
 
 [[redirects]]
   from = "/api/*"
