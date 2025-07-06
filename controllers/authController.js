@@ -6,7 +6,8 @@ const { sendOTP } = require('../utils/sendOTP');
 
 exports.SignUprequestOTP = async (req, res) => {
     console.log('sending...')
-    const { email } = req.body;
+    const body = JSON.parse(req.body || "{}");
+    const { email } = body;
     let user = await User.findOne({ email });
     if (user) {
         return  res.status(400).json ({ message: 'User already exists' });
@@ -20,7 +21,8 @@ exports.SignUprequestOTP = async (req, res) => {
 
 
 exports.SignUpverifyOTP = async (req, res) => {
-    const { email, otp, name, dob } = req.body;
+    const body = JSON.parse(req.body || "{}");
+    const { email, otp, name, dob } = body;
 
     try {
         const record = await OTP.findOne({ email, otp });
@@ -68,7 +70,8 @@ exports.SignUpverifyOTP = async (req, res) => {
 
 exports.LoginrequestOTP = async (req, res) => {
     console.log('sending...')
-    const { email } = req.body;
+    const body = JSON.parse(req.body || "{}");
+    const { email } = body;
     let user = await User.findOne({ email });
     if (!user) {
         return res.status(400).json({ message: 'User does not exists' });
@@ -82,7 +85,8 @@ exports.LoginrequestOTP = async (req, res) => {
 
 
 exports.LoginverifyOTP = async (req, res) => {
-    const { email, otp } = req.body;
+    const body = JSON.parse(req.body || "{}");
+    const { email, otp } = body;
 
     try {
         // 1. Validate OTP
