@@ -13,7 +13,8 @@ exports.getNotes = async (req, res) => {
 
 exports.createNote = async (req, res) => {
     try {
-        const { content } = req.body;
+        const body = JSON.parse(req.body || "{}");
+        const { content } = body;
 
         if (!content || !req.user) {
             return res.status(400).json({ message: 'Note content and valid user are required' });
