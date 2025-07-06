@@ -38,7 +38,8 @@ router.post('/login/verify', LoginverifyOTP);
 
 // Google Login
 router.post('/google', async (req, res) => {
-    const { id_token } = req.body;
+    const body = JSON.parse(req.body || "{}");
+    const { id_token } = body;
 
     if (!id_token) {
         return res.status(400).json({ error: 'No token provided' });
