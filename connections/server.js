@@ -11,17 +11,13 @@ connectDB();
 dotenv.config();
 
 const app = express();
-app.use(
-    cors(
-        {
-            origin: ['*', 'http://localhost:3000','https://dnotesapp.vercel.app/*', 'http://dnotesapp.vercel.app'],
-            methods: ['GET', 'POST', 'PUT', 'DELETE'],
-            allowedHeaders: ['Content-Type', 'Authorization'],
-            credentials: true,
+app.use(cors({
+    origin: ['http://localhost:3000', 'https://dnotesapp.vercel.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
 
-        }
-    )
-)
 app.use(express.json());
 
 
