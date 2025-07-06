@@ -1,5 +1,5 @@
-// connections/server.js
 console.log('Hello');
+
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -14,15 +14,15 @@ app.use(express.json());
 // MongoDB connection (connect only once)
 if (!mongoose.connection.readyState) {
     mongoose.connect(process.env.MONGO_URI)
-        .then(() => console.log('✅ MongoDB connected'))
-        .catch((err) => console.error('❌ MongoDB connection error:', err));
+        .then(() => console.log('✅ Connected to MongoDB'))
+        .catch((error) => console.error(`❌ MongoDB connection failed: ${error.message}`));
 }
 
 // ✅ All routes must be prefixed with /api
 app.use('/api/auth', authRoutes);
 app.use('/api/notes', noteRoutes);
 
-// ✅ Optional health check
+// ✅ Optional health check route
 app.get('/api', (req, res) => {
     res.send('🚀 API working from Netlify!');
 });
