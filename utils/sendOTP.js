@@ -1,4 +1,4 @@
-// utils/sendOTP.js
+
 const nodemailer = require('nodemailer');
 
 module.exports.sendOTP = async (email, otp) => {

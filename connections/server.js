@@ -26,11 +26,9 @@ app.use(express.json());
 
 
 
-// ✅ All routes must be prefixed with /api
 app.use('/api/auth', authRoutes);
 app.use('/api/notes', noteRoutes);
 
-// ✅ Optional health check route
 app.get('/api', (req, res) => {
     res.send('🚀 API working from Netlify!');
 });

@@ -1,4 +1,4 @@
-// routes/noteRoutes.js
+
 const express = require('express');
 const { createNote, getNotes, deleteNote } = require('../controllers/notesController');
 const { verifyToken } = require('../middlewares/authMiddlewares');

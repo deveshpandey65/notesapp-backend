@@ -1,4 +1,4 @@
-// routes/authRoutes.js
+
 
 const express = require('express');
 const { OAuth2Client } = require('google-auth-library');
@@ -66,7 +66,6 @@ router.post('/google', async (req, res) => {
             { expiresIn: '7d' }
         );
 
-        // ✅ Responding with token + user info
         return res.status(200).json({
             message: 'Login successful',
             token,
