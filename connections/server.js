@@ -5,18 +5,14 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRoutes = require('../routes/authRoutes');
 const noteRoutes = require('../routes/noteRoutes');
-
+const connectDB = require('./db');
+connectDB();
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 
-// MongoDB connection (connect only once)
-if (!mongoose.connection.readyState) {
-    mongoose.connect(process.env.MONGO_URI)
-        .then(() => console.log('✅ Connected to MongoDB'))
-        .catch((error) => console.error(`❌ MongoDB connection failed: ${error.message}`));
-}
+
 
 // ✅ All routes must be prefixed with /api
 app.use('/api/auth', authRoutes);
